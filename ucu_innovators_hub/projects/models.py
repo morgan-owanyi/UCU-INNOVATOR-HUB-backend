@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+import datetime
 
 class Project(models.Model):
     STATUS_CHOICES = (
@@ -14,6 +15,7 @@ class Project(models.Model):
     department = models.CharField(max_length=100)
     category = models.CharField(max_length=100)
     technologies = models.CharField(max_length=255)
+    year = models.IntegerField(default=datetime.datetime.now().year)
     github_link = models.URLField(blank=True, null=True)
     demo_link = models.URLField(blank=True, null=True)
     document = models.FileField(upload_to='project_docs/', blank=True, null=True)
